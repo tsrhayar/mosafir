@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mosafir — Départs de bus</title>
+<meta name="description" content="Tous les départs de bus depuis la gare routière, avec horaires, quais et arrêts. Arabe, français, anglais.">
+<meta name="theme-color" content="#b3261e">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="./"><span class="logo" aria-hidden="true">🚌</span><span>Mosafir</span></a>
+  <nav class="langs" aria-label="Language">
+    <button data-lang="ar" lang="ar">العربية</button>
+    <button data-lang="fr" lang="fr">FR</button>
+    <button data-lang="en" lang="en">EN</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow" data-i18n="eyebrow"></p>
+    <h1><span data-i18n="heroTitle"></span> <span class="accent" id="heroCity"></span></h1>
+    <p class="lead" data-i18n="heroLead"></p>
+    <div class="stats">
+      <div><strong id="statDeps">–</strong><span data-i18n="statDeps"></span></div>
+      <div><strong id="statDests">–</strong><span data-i18n="statDests"></span></div>
+      <div><strong id="statCarriers">–</strong><span data-i18n="statCarriers"></span></div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+  <section class="controls" aria-label="Filters">
+    <label class="field">
+      <span data-i18n="from"></span>
+      <select id="citySel"></select>
+    </label>
+    <div class="field grow">
+      <label for="q" id="qLabel" data-i18n="searchLabel"></label>
+      <div class="ac">
+        <input id="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"
+          role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="acList" aria-haspopup="listbox" data-i18n-ph="searchPh">
+        <button type="button" class="ac-clear" id="qClear" data-i18n-aria="clear" hidden>×</button>
+        <ul id="acList" class="ac-list" role="listbox" aria-labelledby="qLabel" hidden></ul>
+      </div>
+      <span id="acStatus" class="sr-only" role="status" aria-live="polite"></span>
+    </div>
+    <div class="field">
+      <label for="carrierQ" id="carrierLabel" data-i18n="carrier"></label>
+      <div class="ac">
+        <input id="carrierQ" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"
+          role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="carrierList" aria-haspopup="listbox" data-i18n-ph="allCarriers">
+        <button type="button" class="ac-clear" id="carrierClear" data-i18n-aria="clear" hidden>×</button>
+        <ul id="carrierList" class="ac-list" role="listbox" aria-labelledby="carrierLabel" hidden></ul>
+      </div>
+      <span id="carrierStatus" class="sr-only" role="status" aria-live="polite"></span>
+    </div>
+    <label class="field">
+      <span data-i18n="sort"></span>
+      <select id="sortSel">
+        <option value="next" data-i18n="sortNext"></option>
+        <option value="asc" data-i18n="sortAsc"></option>
+        <option value="desc" data-i18n="sortDesc"></option>
+      </select>
+    </label>
+  </section>
+
+  <section class="next" id="nextBox" aria-live="polite">
+    <div class="next-head">
+      <h2 data-i18n="nextTitle"></h2>
+      <span class="clock" id="clock"></span>
+    </div>
+    <div class="next-list" id="nextList"></div>
+  </section>
+
+  <div class="resultbar">
+    <span id="count"></span>
+    <button class="linkbtn" id="resetBtn" data-i18n="reset"></button>
+  </div>
+  <div id="gaps"></div>
+  <ol class="list" id="list"></ol>
+  <p class="empty" id="empty" hidden data-i18n="empty"></p>
+</main>
+
+<footer class="foot">
+  <p id="station"></p>
+  <p id="source"></p>
+  <p class="muted" data-i18n="disclaimer"></p>
+</footer>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

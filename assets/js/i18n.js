@@ -1,0 +1,53 @@
+window.I18N = {
+  fr: {
+    acCarrierTop: "Transporteurs les plus fréquents", acCarrierNone: "Aucun transporteur trouvé", clear: "Effacer", 
+    acTitleTop: "Destinations populaires", acTitle: "Suggestions", acDest: n => `${n} départ${n>1?"s":""}`, acVia: n => `+${n} via`, acStop: n => `arrêt · ${n} bus`, acNone: "Aucune ville trouvée", acCount: n => `${n} suggestion${n>1?"s":""} disponible${n>1?"s":""}. Flèches haut/bas pour naviguer.`,
+    eyebrow: "Gare routière · Horaires relevés sur le tableau des départs",
+    heroTitle: "Tous les départs de bus depuis",
+    heroLead: "Horaires, quais, transporteurs et arrêts sur la route. Cherchez une ville et trouvez votre bus en quelques secondes.",
+    statDeps: "départs / jour", statDests: "destinations", statCarriers: "transporteurs",
+    from: "Ville de départ", searchLabel: "Destination ou arrêt", searchPh: "Ex. Agadir, Casablanca, الصويرة…",
+    carrier: "Transporteur", allCarriers: "Tous les transporteurs", sort: "Trier",
+    sortNext: "Prochains d'abord", sortAsc: "Heure ↑", sortDesc: "Heure ↓",
+    nextTitle: "Prochains départs", nextNone: "Aucun départ dans les 2 prochaines heures.",
+    count: n => `${n} départ${n>1?"s":""}`, reset: "Réinitialiser",
+    platform: "Quai", via: "Via", direct: "Direct", inMin: m => m<1?"maintenant":`dans ${m} min`, inH: (h,m)=>`dans ${h} h ${String(m).padStart(2,"0")}`,
+    uncertain: "à vérifier", empty: "Aucun départ ne correspond à votre recherche.",
+    station: "Gare", source: "Source", disclaimer: "Horaires indicatifs relevés sur le tableau d'affichage. Vérifiez toujours au guichet avant de voyager.",
+    loadError: "Impossible de charger les horaires (data/departures.json).", noPlatform: "—", tomorrow: "demain"
+  },
+  en: {
+    acCarrierTop: "Most frequent carriers", acCarrierNone: "No carrier found", clear: "Clear", 
+    acTitleTop: "Popular destinations", acTitle: "Suggestions", acDest: n => `${n} departure${n>1?"s":""}`, acVia: n => `+${n} via`, acStop: n => `stop · ${n} bus${n>1?"es":""}`, acNone: "No town found", acCount: n => `${n} suggestion${n>1?"s":""} available. Use up and down arrows to navigate.`,
+    eyebrow: "Coach station · Straight from the departures board",
+    heroTitle: "Every bus departure from",
+    heroLead: "Times, platforms, carriers and stops along the way. Search a town and find your bus in seconds.",
+    statDeps: "departures / day", statDests: "destinations", statCarriers: "carriers",
+    from: "Departure city", searchLabel: "Destination or stop", searchPh: "e.g. Agadir, Casablanca, الصويرة…",
+    carrier: "Carrier", allCarriers: "All carriers", sort: "Sort",
+    sortNext: "Upcoming first", sortAsc: "Time ↑", sortDesc: "Time ↓",
+    nextTitle: "Next departures", nextNone: "No departures in the next 2 hours.",
+    count: n => `${n} departure${n>1?"s":""}`, reset: "Reset",
+    platform: "Platform", via: "Via", direct: "Direct", inMin: m => m<1?"now":`in ${m} min`, inH: (h,m)=>`in ${h} h ${String(m).padStart(2,"0")}`,
+    uncertain: "to verify", empty: "No departures match your search.",
+    station: "Station", source: "Source", disclaimer: "Indicative times copied from the departures board. Always check at the ticket office before you travel.",
+    loadError: "Could not load the timetable (data/departures.json).", noPlatform: "—", tomorrow: "tomorrow"
+  },
+  ar: {
+    acCarrierTop: "الشركات الأكثر رحلات", acCarrierNone: "لم يتم العثور على أي شركة", clear: "مسح", 
+    acTitleTop: "الوجهات الأكثر طلباً", acTitle: "اقتراحات", acDest: n => `${n} رحلة`, acVia: n => `${n} عبرها`, acStop: n => `محطة توقف · ${n} حافلة`, acNone: "لم يتم العثور على أي مدينة", acCount: n => `${n} اقتراحات متاحة. استعمل الأسهم للتنقل.`,
+    eyebrow: "المحطة الطرقية · مباشرة من لوحة المغادرة",
+    heroTitle: "جميع رحلات الحافلات من",
+    heroLead: "التوقيت، الرصيف، شركة النقل ومحطات التوقف في الطريق. ابحث عن مدينتك واعثر على حافلتك في ثوانٍ.",
+    statDeps: "رحلة / يوم", statDests: "وجهة", statCarriers: "شركة نقل",
+    from: "مدينة الانطلاق", searchLabel: "الوجهة أو محطة توقف", searchPh: "مثال: أكادير، الدار البيضاء، Essaouira…",
+    carrier: "شركة النقل", allCarriers: "جميع الشركات", sort: "ترتيب",
+    sortNext: "الأقرب أولاً", sortAsc: "الوقت ↑", sortDesc: "الوقت ↓",
+    nextTitle: "الرحلات القادمة", nextNone: "لا توجد رحلات خلال الساعتين القادمتين.",
+    count: n => `${n} رحلة`, reset: "إعادة الضبط",
+    platform: "الرصيف", via: "عبر", direct: "مباشر", inMin: m => m<1?"الآن":`بعد ${m} دقيقة`, inH: (h,m)=>`بعد ${h} س ${String(m).padStart(2,"0")} د`,
+    uncertain: "يحتاج تأكيد", empty: "لا توجد رحلات مطابقة لبحثك.",
+    station: "المحطة", source: "المصدر", disclaimer: "التوقيتات إرشادية ومنقولة من لوحة الإعلانات. تأكد دائماً من الشباك قبل السفر.",
+    loadError: "تعذر تحميل التوقيت (data/departures.json).", noPlatform: "—", tomorrow: "غداً"
+  }
+};
