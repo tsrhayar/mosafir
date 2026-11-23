@@ -313,18 +313,52 @@
     setInterval(render, 60000);
   }
 
+
+  // ---------- PWA: service worker, install button, offline badge ----------
+  function setOffline(on) {
+    const badge = $("#offlineBadge");
+    badge.hidden = !on; badge.title = t("offlineTip");
+  }
+  function initPWA() {
+    if ("serviceWorker" in navigator && location.protocol !== "file:") {
+      const reg = () => navigator.serviceWorker.register("sw.js").catch((e) => console.warn("SW registration failed", e));
+      if (document.readyState === "complete") reg(); else window.addEventListener("load", reg);
+    }
+    const btn = $("#installBtn");
+    let deferred = null;
+    const standalone = () => window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferred = e;
+      btn.hidden = standalone();
+    });
+    btn.addEventListener("click", async () => {
+      if (!deferred) return;
+      btn.hidden = true;
+      deferred.prompt();
+      try { await deferred.userChoice; } catch (e) {}
+      deferred = null;
+    });
+    window.addEventListener("appinstalled", () => { deferred = null; btn.hidden = true; });
+
+    window.addEventListener("online", () => setOffline(false));
+    window.addEventListener("offline", () => setOffline(true));
+    if (!navigator.onLine) setOffline(true);
+  }
+
   // ---------- boot ----------
   async function boot() {
     const p = new URLSearchParams(location.search);
     let saved = null; try { saved = localStorage.getItem("mosafir.lang"); } catch (e) {}
     state.lang = LANGS.includes(p.get("lang")) ? p.get("lang") : (LANGS.includes(saved) ? saved : "fr");
     state.q = p.get("q") || ""; state.carrier = p.get("carrier") || "";
-    bindAc(); bind();
+    bindAc(); bind(); initPWA();
     destAC.set(state.q); carrierAC.set(state.carrier);
     applyLang();
     try {
       const res = await fetch(DATA_URL, { cache: "no-cache" });
       if (!res.ok) throw new Error(res.status);
+      if (res.headers.get("X-Mosafir-Offline")) setOffline(true);
       state.data = await res.json();
     } catch (e) {
       $("#list").innerHTML = `<li class="error">${esc(t("loadError"))}</li>`; console.error(e); return;

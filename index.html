@@ -2,11 +2,19 @@
 <html lang="fr" dir="ltr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mosafir — Départs de bus</title>
 <meta name="description" content="Tous les départs de bus depuis la gare routière, avec horaires, quais et arrêts. Arabe, français, anglais.">
 <meta name="theme-color" content="#b3261e">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mosafir">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="application-name" content="Mosafir">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
@@ -15,11 +23,15 @@
 <body>
 <header class="topbar">
   <a class="brand" href="./"><span class="logo" aria-hidden="true">🚌</span><span>Mosafir</span></a>
+  <div class="top-actions">
+  <span class="offline" id="offlineBadge" role="status" hidden><span aria-hidden="true">●</span> <span data-i18n="offline"></span></span>
+  <button class="install" id="installBtn" type="button" hidden><span aria-hidden="true">⬇</span> <span data-i18n="install"></span></button>
   <nav class="langs" aria-label="Language">
     <button data-lang="ar" lang="ar">العربية</button>
     <button data-lang="fr" lang="fr">FR</button>
     <button data-lang="en" lang="en">EN</button>
   </nav>
+  </div>
 </header>
 
 <section class="hero">

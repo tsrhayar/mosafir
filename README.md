@@ -80,3 +80,12 @@ Check that the JSON is valid before uploading, e.g. with `python -m json.tool da
 The rows were transcribed from 104 photos of the departures board at the Gare Routière de Voyageurs in Marrakech, taken on 20/11/2026 at about 16:40.
 They cover 24 h from 16:30. Identical rows were merged. Rows that were hard to read have `"uncertain": true`.
 One board page between 15:30 and 16:00 was not photographed, and this is noted in `coverage_gaps`.
+
+## PWA (installable and works offline)
+- `manifest.webmanifest`: app name, colors and icons. `start_url` and `scope` are `./`, so the same files work on GitHub Pages (`/mosafir/`) and at `http://localhost/mosafir/`.
+- `sw.js`: the service worker. It precaches the app shell and loads `data/departures.json` network-first, falling back to the cached copy when offline. Pages are network-first with a fallback to the cached `index.html`. Google Fonts are cached at runtime.
+- **When you change** `index.html`, CSS, JS or icons, **bump `VERSION` in `sw.js`** (e.g. `"v2"`). Visitors then get the new files, and the old caches are deleted on activate. Updates to `departures.json` are picked up automatically when online.
+- Icons are in `assets/icons/` (192, 512, maskable 512, apple-touch 180, favicon 32).
+- An "Installer l'app" button appears when the browser offers installation, and an "Hors ligne" badge appears when you're offline.
+- `.htaccess` (Apache/Laragon only) serves the manifest with the right MIME type and stops `sw.js` from being cached. GitHub Pages ignores it.
+- A service worker needs HTTPS or `localhost`. It does not run from `file://`.

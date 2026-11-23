@@ -1,5 +1,6 @@
 window.I18N = {
   fr: {
+    install: "Installer l'app", offline: "Hors ligne", offlineTip: "Hors ligne : horaires enregistrés affichés", 
     acCarrierTop: "Transporteurs les plus fréquents", acCarrierNone: "Aucun transporteur trouvé", clear: "Effacer", 
     acTitleTop: "Destinations populaires", acTitle: "Suggestions", acDest: n => `${n} départ${n>1?"s":""}`, acVia: n => `+${n} via`, acStop: n => `arrêt · ${n} bus`, acNone: "Aucune ville trouvée", acCount: n => `${n} suggestion${n>1?"s":""} disponible${n>1?"s":""}. Flèches haut/bas pour naviguer.`,
     eyebrow: "Gare routière · Horaires relevés sur le tableau des départs",
@@ -17,6 +18,7 @@ window.I18N = {
     loadError: "Impossible de charger les horaires (data/departures.json).", noPlatform: "—", tomorrow: "demain"
   },
   en: {
+    install: "Install app", offline: "Offline", offlineTip: "Offline: showing saved timetable", 
     acCarrierTop: "Most frequent carriers", acCarrierNone: "No carrier found", clear: "Clear", 
     acTitleTop: "Popular destinations", acTitle: "Suggestions", acDest: n => `${n} departure${n>1?"s":""}`, acVia: n => `+${n} via`, acStop: n => `stop · ${n} bus${n>1?"es":""}`, acNone: "No town found", acCount: n => `${n} suggestion${n>1?"s":""} available. Use up and down arrows to navigate.`,
     eyebrow: "Coach station · Straight from the departures board",
@@ -34,6 +36,7 @@ window.I18N = {
     loadError: "Could not load the timetable (data/departures.json).", noPlatform: "—", tomorrow: "tomorrow"
   },
   ar: {
+    install: "تثبيت التطبيق", offline: "غير متصل", offlineTip: "غير متصل: يتم عرض التوقيت المحفوظ", 
     acCarrierTop: "الشركات الأكثر رحلات", acCarrierNone: "لم يتم العثور على أي شركة", clear: "مسح", 
     acTitleTop: "الوجهات الأكثر طلباً", acTitle: "اقتراحات", acDest: n => `${n} رحلة`, acVia: n => `${n} عبرها`, acStop: n => `محطة توقف · ${n} حافلة`, acNone: "لم يتم العثور على أي مدينة", acCount: n => `${n} اقتراحات متاحة. استعمل الأسهم للتنقل.`,
     eyebrow: "المحطة الطرقية · مباشرة من لوحة المغادرة",
